@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = jade-desktop-mode
+
+[Action]
+Description = Disable systemd desktop mode service for Jade.
+When = PreTransaction
+Exec = /bin/sh -c "systemctl is-active jade-desktop-mode.service >/dev/null || systemctl disable jade-desktop-mode & ( sed -i '/hint_type/c\   \"hint_type\" : \"\",' /opt/jade/application-settings.json )"

@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = jade-desktop-mode
+
+[Action]
+Description = Enable systemd desktop mode service for Jade.
+When = PostTransaction
+Exec = /bin/sh -c "systemctl is-active jade-desktop-mode.service >/dev/null || systemctl enable jade-desktop-mode & ( sed -i '/hint_type/c\   \"hint_type\" : \"desktop\",' /opt/jade/application-settings.json )" 

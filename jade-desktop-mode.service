@@ -1,0 +1,8 @@
+[Unit]
+Description=Run JADE in Desktop Mode
+
+[Service]
+ExecStart=/usr/bin/jade-desktop-mode.sh
+
+[Install]
+WantedBy=multi-user.target 
